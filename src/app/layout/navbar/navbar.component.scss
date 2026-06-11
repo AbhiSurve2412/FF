@@ -1,0 +1,206 @@
+@use 'styles/variables' as *;
+@use 'styles/mixins' as *;
+
+// ── Host ─────────────────────────────────────────────────────
+:host {
+  display: block;
+  position: sticky;
+  top: 0;
+  z-index: $z-sticky;
+}
+
+// ── Shell ─────────────────────────────────────────────────────
+.navbar {
+  background-color: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: var(--shadow-xs);
+  transition: box-shadow $transition-base;
+
+  &--open {
+    box-shadow: var(--shadow-md);
+  }
+}
+
+// ── Main bar ──────────────────────────────────────────────────
+.navbar__bar {
+  @include flex-between;
+  height: 3.5rem;
+  max-width: $bp-xl;
+  margin: 0 auto;
+  padding: 0 $space-4;
+  gap: $space-3;
+
+  @include lg {
+    padding: 0 $space-8;
+    gap: $space-4;
+  }
+}
+
+// ── Brand ─────────────────────────────────────────────────────
+.navbar__brand {
+  @include flex-start;
+  gap: $space-2;
+  text-decoration: none;
+  flex-shrink: 0;
+
+  &:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 3px;
+    border-radius: var(--radius-sm);
+  }
+}
+
+.navbar__logo {
+  flex-shrink: 0;
+  transition: $transition-base;
+
+  .navbar__logo-bg     { fill: var(--color-primary); }
+  .navbar__logo-letter { fill: #ffffff; }
+}
+
+.navbar__brand:hover .navbar__logo {
+  transform: rotate(-3deg) scale(1.05);
+}
+
+.navbar__wordmark {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: var(--color-text-primary);
+  letter-spacing: -0.025em;
+  white-space: nowrap;
+}
+
+// ── Desktop nav ───────────────────────────────────────────────
+.navbar__nav {
+  display: none;
+  flex: 1;
+  justify-content: center;
+
+  @include lg {
+    display: flex;
+  }
+}
+
+.navbar__nav-list {
+  @include flex-start;
+  gap: $space-1;
+}
+
+.navbar__link {
+  display: inline-flex;
+  align-items: center;
+  padding: $space-2 $space-3;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  transition: $transition-fast;
+  white-space: nowrap;
+
+  &:hover {
+    color: var(--color-text-primary);
+    background-color: var(--color-surface-2);
+  }
+
+  &--active {
+    color: var(--color-primary);
+    background-color: var(--color-primary-light);
+    font-weight: $font-weight-semibold;
+  }
+}
+
+// ── Desktop actions ───────────────────────────────────────────
+.navbar__actions {
+  display: none;
+  align-items: center;
+  gap: $space-3;
+  flex-shrink: 0;
+
+  @include lg {
+    display: flex;
+  }
+}
+
+// ── Hamburger (mobile only) ───────────────────────────────────
+.navbar__hamburger {
+  @include flex-center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: var(--radius-md);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: $transition-fast;
+  flex-shrink: 0;
+
+  &:hover {
+    background-color: var(--color-surface-2);
+    color: var(--color-text-primary);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+
+  @include lg {
+    display: none;
+  }
+}
+
+// ── Mobile menu ───────────────────────────────────────────────
+.navbar__mobile-menu {
+  border-top: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  padding: $space-4;
+  animation: fadeInDown 0.2s ease forwards;
+
+  @include lg {
+    display: none;
+  }
+}
+
+.navbar__mobile-nav {
+  display: flex;
+  flex-direction: column;
+  gap: $space-1;
+  margin-bottom: $space-5;
+}
+
+.navbar__mobile-link {
+  display: flex;
+  align-items: center;
+  padding: $space-3 $space-4;
+  font-size: $font-size-base;
+  font-weight: $font-weight-medium;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  border-radius: var(--radius-lg);
+  transition: $transition-fast;
+
+  &:hover {
+    color: var(--color-text-primary);
+    background-color: var(--color-surface-2);
+  }
+
+  &--active {
+    color: var(--color-primary);
+    background-color: var(--color-primary-light);
+    font-weight: $font-weight-semibold;
+  }
+}
+
+.navbar__mobile-actions {
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+  padding-top: $space-4;
+  border-top: 1px solid var(--color-border);
+}
+
+.navbar__mobile-btn {
+  width: 100%;
+  justify-content: center;
+}

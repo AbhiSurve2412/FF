@@ -1,0 +1,121 @@
+@use 'styles/variables' as *;
+@use 'styles/mixins' as *;
+
+// ── Shell ─────────────────────────────────────────────────────
+.footer {
+  background-color: var(--color-secondary);
+  color: rgba(255, 255, 255, 0.65);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+// ── Container ─────────────────────────────────────────────────
+.footer__container {
+  max-width: $bp-xl;
+  margin: 0 auto;
+  padding: 0 $space-4;
+
+  @include lg {
+    padding: 0 $space-8;
+  }
+}
+
+// ── Top section ───────────────────────────────────────────────
+.footer__top {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $space-10;
+  padding: $space-12 0 $space-10;
+
+  @include md {
+    grid-template-columns: 1.8fr 1fr;
+    gap: $space-16;
+    align-items: start;
+  }
+}
+
+// ── Brand column ──────────────────────────────────────────────
+.footer__brand-col {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+}
+
+.footer__brand {
+  @include flex-start;
+  gap: $space-2;
+  text-decoration: none;
+  width: fit-content;
+
+  &:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 3px;
+    border-radius: var(--radius-sm);
+  }
+}
+
+.footer__logo {
+  flex-shrink: 0;
+
+  .footer__logo-bg     { fill: var(--color-primary); }
+  .footer__logo-letter { fill: #ffffff; }
+}
+
+.footer__wordmark {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: #ffffff;
+  letter-spacing: -0.025em;
+}
+
+.footer__tagline {
+  font-size: $font-size-sm;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: $line-height-relaxed;
+  max-width: 28rem;
+}
+
+// ── Links column ──────────────────────────────────────────────
+.footer__links-col {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+}
+
+.footer__links-heading {
+  font-size: $font-size-xs;
+  font-weight: $font-weight-semibold;
+  color: rgba(255, 255, 255, 0.35);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.footer__links {
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+}
+
+.footer__link {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: rgba(255, 255, 255, 0.55);
+  text-decoration: none;
+  transition: $transition-fast;
+  width: fit-content;
+
+  &:hover {
+    color: #ffffff;
+  }
+}
+
+// ── Bottom bar ────────────────────────────────────────────────
+.footer__bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding: $space-5 0;
+}
+
+.footer__copyright {
+  font-size: $font-size-sm;
+  color: rgba(255, 255, 255, 0.35);
+  line-height: $line-height-normal;
+}
