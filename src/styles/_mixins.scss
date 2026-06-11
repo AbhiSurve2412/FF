@@ -1,0 +1,252 @@
+// ============================================================
+// FixPass Design System — Mixins
+// ============================================================
+
+@use 'variables' as *;
+
+// ============================================================
+// RESPONSIVE BREAKPOINTS
+// ============================================================
+
+@mixin sm {
+  @media (min-width: #{$bp-sm}) { @content; }
+}
+
+@mixin md {
+  @media (min-width: #{$bp-md}) { @content; }
+}
+
+@mixin lg {
+  @media (min-width: #{$bp-lg}) { @content; }
+}
+
+@mixin xl {
+  @media (min-width: #{$bp-xl}) { @content; }
+}
+
+@mixin xxl {
+  @media (min-width: #{$bp-2xl}) { @content; }
+}
+
+@mixin respond-to($bp) {
+  @if      $bp == 'sm'  { @include sm  { @content; } }
+  @else if $bp == 'md'  { @include md  { @content; } }
+  @else if $bp == 'lg'  { @include lg  { @content; } }
+  @else if $bp == 'xl'  { @include xl  { @content; } }
+  @else if $bp == '2xl' { @include xxl { @content; } }
+}
+
+@mixin mobile-only {
+  @media (max-width: #{$bp-sm - 0.0625rem}) { @content; }
+}
+
+@mixin tablet-only {
+  @media (min-width: #{$bp-sm}) and (max-width: #{$bp-lg - 0.0625rem}) { @content; }
+}
+
+// ============================================================
+// LAYOUT
+// ============================================================
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex-start {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+@mixin flex-col-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin absolute-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin absolute-fill {
+  position: absolute;
+  inset: 0;
+}
+
+// ============================================================
+// TYPOGRAPHY
+// ============================================================
+
+@mixin text-truncate($lines: 1) {
+  @if $lines == 1 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  } @else {
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+@mixin heading-style {
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight;
+  color: var(--color-text-primary);
+  letter-spacing: -0.02em;
+}
+
+@mixin gradient-text($from: var(--color-primary), $to: var(--color-accent), $deg: 135deg) {
+  background: linear-gradient($deg, $from, $to);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+// ============================================================
+// SURFACES
+// ============================================================
+
+@mixin card-base {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md);
+  transition: $transition-base;
+}
+
+@mixin card-hover {
+  &:hover {
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-border-strong);
+    transform: translateY(-1px);
+  }
+}
+
+@mixin glass($opacity: 0.8) {
+  background: rgba(255, 255, 255, $opacity);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+// ============================================================
+// INTERACTIVE
+// ============================================================
+
+@mixin focus-ring($color: var(--color-primary)) {
+  &:focus-visible {
+    outline: 2px solid $color;
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+  }
+}
+
+@mixin btn-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-2;
+  font-family: var(--font-family-base);
+  font-weight: $font-weight-medium;
+  line-height: $line-height-none;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: $transition-base;
+  white-space: nowrap;
+  user-select: none;
+  position: relative;
+  letter-spacing: -0.01em;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  @include focus-ring;
+}
+
+@mixin input-base {
+  display: block;
+  width: 100%;
+  font-family: var(--font-family-base);
+  font-size: $font-size-sm;
+  font-weight: $font-weight-regular;
+  color: var(--color-text-primary);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: $space-3 $space-4;
+  transition: $transition-base;
+  outline: none;
+  appearance: none;
+
+  &::placeholder {
+    color: var(--color-text-muted);
+  }
+
+  &:hover:not(:disabled):not(:focus) {
+    border-color: var(--color-border-strong);
+  }
+
+  &:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  }
+
+  &:disabled {
+    background-color: var(--color-surface-2);
+    color: var(--color-text-muted);
+    cursor: not-allowed;
+  }
+}
+
+// ============================================================
+// LOADING STATES
+// ============================================================
+
+@mixin skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--color-surface-2) 25%,
+    var(--color-border) 50%,
+    var(--color-surface-2) 75%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.5s ease infinite;
+}
+
+// ============================================================
+// VISUAL EFFECTS
+// ============================================================
+
+@mixin gradient-bg($from: $color-primary, $to: $color-accent, $deg: 135deg) {
+  background: linear-gradient($deg, $from, $to);
+}
+
+@mixin dot-pattern {
+  background-image: radial-gradient(circle, var(--color-border) 1px, transparent 1px);
+  background-size: 1.5rem 1.5rem;
+}
+
+@mixin grid-pattern {
+  background-image:
+    linear-gradient(var(--color-border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-border) 1px, transparent 1px);
+  background-size: 1.5rem 1.5rem;
+}

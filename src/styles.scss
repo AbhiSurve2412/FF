@@ -1,1 +1,101 @@
-/* You can add global styles to this file, and also import other style files */
+// ============================================================
+// FixPass 2.0 — Global Stylesheet
+// ============================================================
+// Rule: ALL @use statements must appear before any CSS output.
+// Order: variables → reset → typography → animations → components → utilities
+// The :root token block and layout rules come after all @use.
+// ============================================================
+
+// Partials (all @use first — SCSS module system requirement)
+@use 'styles/variables' as *;
+@use 'styles/reset';
+@use 'styles/typography';
+@use 'styles/animations';
+@use 'styles/components';
+@use 'styles/utilities';
+
+// ============================================================
+// CSS CUSTOM PROPERTIES — Design Tokens
+// Must be after @use blocks
+// ============================================================
+
+:root {
+  // Brand
+  --color-primary:          #{$color-primary};
+  --color-primary-hover:    #{$color-primary-hover};
+  --color-primary-active:   #{$color-primary-active};
+  --color-primary-light:    #{$color-primary-light};
+  --color-secondary:        #{$color-secondary};
+  --color-accent:           #{$color-accent};
+  --color-accent-hover:     #{$color-accent-hover};
+
+  // Semantic
+  --color-success:          #{$color-success};
+  --color-success-hover:    #{$color-success-hover};
+  --color-success-light:    #{$color-success-light};
+  --color-warning:          #{$color-warning};
+  --color-warning-hover:    #{$color-warning-hover};
+  --color-warning-light:    #{$color-warning-light};
+  --color-danger:           #{$color-danger};
+  --color-danger-hover:     #{$color-danger-hover};
+  --color-danger-light:     #{$color-danger-light};
+  --color-info:             #{$color-info};
+  --color-info-light:       #{$color-info-light};
+
+  // Neutrals
+  --color-bg:               #{$color-bg};
+  --color-surface:          #{$color-surface};
+  --color-surface-2:        #{$color-surface-2};
+  --color-surface-3:        #{$color-surface-3};
+  --color-border:           #{$color-border};
+  --color-border-strong:    #{$color-border-strong};
+
+  // Text
+  --color-text-primary:     #{$color-text-primary};
+  --color-text-secondary:   #{$color-text-secondary};
+  --color-text-muted:       #{$color-text-muted};
+  --color-text-inverse:     #{$color-text-inverse};
+
+  // Typography
+  --font-family-base:       #{$font-family-base};
+  --font-family-mono:       #{$font-family-mono};
+
+  // Border Radius
+  --radius-xs:   #{$radius-xs};
+  --radius-sm:   #{$radius-sm};
+  --radius-md:   #{$radius-md};
+  --radius-lg:   #{$radius-lg};
+  --radius-xl:   #{$radius-xl};
+  --radius-2xl:  #{$radius-2xl};
+  --radius-3xl:  #{$radius-3xl};
+  --radius-full: #{$radius-full};
+
+  // Shadows
+  --shadow-xs:      #{$shadow-xs};
+  --shadow-sm:      #{$shadow-sm};
+  --shadow-md:      #{$shadow-md};
+  --shadow-lg:      #{$shadow-lg};
+  --shadow-xl:      #{$shadow-xl};
+  --shadow-inner:   #{$shadow-inner};
+  --shadow-primary: #{$shadow-primary};
+
+  // Transitions
+  --transition-fast:   #{$transition-fast};
+  --transition-base:   #{$transition-base};
+  --transition-slow:   #{$transition-slow};
+  --transition-bounce: #{$transition-bounce};
+}
+
+// ============================================================
+// GLOBAL LAYOUT
+// ============================================================
+
+html,
+body {
+  height: 100%;
+}
+
+app-root {
+  display: block;
+  min-height: 100vh;
+}

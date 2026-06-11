@@ -1,0 +1,375 @@
+// ============================================================
+// FixPass Design System — Utility Classes
+// ============================================================
+
+@use 'variables' as *;
+
+// ============================================================
+// DISPLAY
+// ============================================================
+
+.d-none        { display: none !important; }
+.d-block       { display: block !important; }
+.d-inline      { display: inline !important; }
+.d-inline-block { display: inline-block !important; }
+.d-flex        { display: flex !important; }
+.d-inline-flex { display: inline-flex !important; }
+.d-grid        { display: grid !important; }
+.d-contents    { display: contents !important; }
+
+// Responsive display
+@media (max-width: #{$bp-sm}) {
+  .d-sm-none  { display: none !important; }
+  .d-sm-block { display: block !important; }
+  .d-sm-flex  { display: flex !important; }
+}
+
+@media (min-width: #{$bp-md}) {
+  .d-md-none  { display: none !important; }
+  .d-md-block { display: block !important; }
+  .d-md-flex  { display: flex !important; }
+}
+
+// ============================================================
+// FLEX
+// ============================================================
+
+.flex-row     { flex-direction: row !important; }
+.flex-col     { flex-direction: column !important; }
+.flex-row-rev { flex-direction: row-reverse !important; }
+.flex-col-rev { flex-direction: column-reverse !important; }
+.flex-wrap    { flex-wrap: wrap !important; }
+.flex-nowrap  { flex-wrap: nowrap !important; }
+
+.flex-1       { flex: 1 1 0% !important; }
+.flex-auto    { flex: 1 1 auto !important; }
+.flex-none    { flex: none !important; }
+.flex-grow    { flex-grow: 1 !important; }
+.flex-shrink-0 { flex-shrink: 0 !important; }
+
+.items-start    { align-items: flex-start !important; }
+.items-center   { align-items: center !important; }
+.items-end      { align-items: flex-end !important; }
+.items-baseline { align-items: baseline !important; }
+.items-stretch  { align-items: stretch !important; }
+
+.self-start    { align-self: flex-start !important; }
+.self-center   { align-self: center !important; }
+.self-end      { align-self: flex-end !important; }
+.self-stretch  { align-self: stretch !important; }
+
+.justify-start   { justify-content: flex-start !important; }
+.justify-center  { justify-content: center !important; }
+.justify-end     { justify-content: flex-end !important; }
+.justify-between { justify-content: space-between !important; }
+.justify-around  { justify-content: space-around !important; }
+.justify-evenly  { justify-content: space-evenly !important; }
+
+.gap-0  { gap: 0 !important; }
+.gap-1  { gap: $space-1 !important; }
+.gap-2  { gap: $space-2 !important; }
+.gap-3  { gap: $space-3 !important; }
+.gap-4  { gap: $space-4 !important; }
+.gap-5  { gap: $space-5 !important; }
+.gap-6  { gap: $space-6 !important; }
+.gap-8  { gap: $space-8 !important; }
+.gap-10 { gap: $space-10 !important; }
+.gap-12 { gap: $space-12 !important; }
+
+.gap-x-2  { column-gap: $space-2 !important; }
+.gap-x-4  { column-gap: $space-4 !important; }
+.gap-x-6  { column-gap: $space-6 !important; }
+.gap-y-2  { row-gap: $space-2 !important; }
+.gap-y-4  { row-gap: $space-4 !important; }
+.gap-y-6  { row-gap: $space-6 !important; }
+
+// ============================================================
+// GRID
+// ============================================================
+
+.grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)) !important; }
+.grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+.grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; }
+.grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)) !important; }
+.grid-cols-5 { grid-template-columns: repeat(5, minmax(0, 1fr)) !important; }
+.grid-cols-6 { grid-template-columns: repeat(6, minmax(0, 1fr)) !important; }
+
+.col-span-1    { grid-column: span 1 !important; }
+.col-span-2    { grid-column: span 2 !important; }
+.col-span-3    { grid-column: span 3 !important; }
+.col-span-4    { grid-column: span 4 !important; }
+.col-span-full { grid-column: 1 / -1 !important; }
+
+// ============================================================
+// SPACING — Margin
+// ============================================================
+
+$spacing-map: (
+  '0':  0,
+  '1':  $space-1,
+  '2':  $space-2,
+  '3':  $space-3,
+  '4':  $space-4,
+  '5':  $space-5,
+  '6':  $space-6,
+  '8':  $space-8,
+  '10': $space-10,
+  '12': $space-12,
+  '16': $space-16,
+);
+
+@each $key, $val in $spacing-map {
+  .m-#{$key}  { margin: $val !important; }
+  .mt-#{$key} { margin-top: $val !important; }
+  .mb-#{$key} { margin-bottom: $val !important; }
+  .ml-#{$key} { margin-left: $val !important; }
+  .mr-#{$key} { margin-right: $val !important; }
+  .mx-#{$key} { margin-left: $val !important; margin-right: $val !important; }
+  .my-#{$key} { margin-top: $val !important; margin-bottom: $val !important; }
+
+  .p-#{$key}  { padding: $val !important; }
+  .pt-#{$key} { padding-top: $val !important; }
+  .pb-#{$key} { padding-bottom: $val !important; }
+  .pl-#{$key} { padding-left: $val !important; }
+  .pr-#{$key} { padding-right: $val !important; }
+  .px-#{$key} { padding-left: $val !important; padding-right: $val !important; }
+  .py-#{$key} { padding-top: $val !important; padding-bottom: $val !important; }
+}
+
+.m-auto  { margin: auto !important; }
+.mx-auto { margin-left: auto !important; margin-right: auto !important; }
+.my-auto { margin-top: auto !important; margin-bottom: auto !important; }
+.ml-auto { margin-left: auto !important; }
+.mr-auto { margin-right: auto !important; }
+.mt-auto { margin-top: auto !important; }
+.mb-auto { margin-bottom: auto !important; }
+
+// ============================================================
+// SIZE
+// ============================================================
+
+.w-full    { width: 100% !important; }
+.w-auto    { width: auto !important; }
+.w-screen  { width: 100vw !important; }
+.w-fit     { width: fit-content !important; }
+.h-full    { height: 100% !important; }
+.h-auto    { height: auto !important; }
+.h-screen  { height: 100vh !important; }
+.h-fit     { height: fit-content !important; }
+.min-w-0   { min-width: 0 !important; }
+.min-h-0   { min-height: 0 !important; }
+.max-w-xs  { max-width: 20rem !important; }
+.max-w-sm  { max-width: 24rem !important; }
+.max-w-md  { max-width: 28rem !important; }
+.max-w-lg  { max-width: 32rem !important; }
+.max-w-xl  { max-width: 36rem !important; }
+.max-w-2xl { max-width: 42rem !important; }
+.max-w-3xl { max-width: 48rem !important; }
+.max-w-full { max-width: 100% !important; }
+
+// ============================================================
+// POSITION
+// ============================================================
+
+.relative { position: relative !important; }
+.absolute { position: absolute !important; }
+.fixed    { position: fixed !important; }
+.sticky   { position: sticky !important; }
+.static   { position: static !important; }
+
+.inset-0  { inset: 0 !important; }
+.top-0    { top: 0 !important; }
+.right-0  { right: 0 !important; }
+.bottom-0 { bottom: 0 !important; }
+.left-0   { left: 0 !important; }
+
+// ============================================================
+// OVERFLOW
+// ============================================================
+
+.overflow-hidden  { overflow: hidden !important; }
+.overflow-auto    { overflow: auto !important; }
+.overflow-scroll  { overflow: scroll !important; }
+.overflow-visible { overflow: visible !important; }
+.overflow-x-auto  { overflow-x: auto !important; }
+.overflow-y-auto  { overflow-y: auto !important; }
+.overflow-x-hidden { overflow-x: hidden !important; }
+
+// ============================================================
+// BORDER RADIUS
+// ============================================================
+
+.rounded-xs   { border-radius: var(--radius-xs) !important; }
+.rounded-sm   { border-radius: var(--radius-sm) !important; }
+.rounded      { border-radius: var(--radius-md) !important; }
+.rounded-lg   { border-radius: var(--radius-lg) !important; }
+.rounded-xl   { border-radius: var(--radius-xl) !important; }
+.rounded-2xl  { border-radius: var(--radius-2xl) !important; }
+.rounded-3xl  { border-radius: var(--radius-3xl) !important; }
+.rounded-full { border-radius: var(--radius-full) !important; }
+.rounded-none { border-radius: 0 !important; }
+
+// ============================================================
+// BOX SHADOW
+// ============================================================
+
+.shadow-none { box-shadow: none !important; }
+.shadow-xs   { box-shadow: var(--shadow-xs) !important; }
+.shadow-sm   { box-shadow: var(--shadow-sm) !important; }
+.shadow-md   { box-shadow: var(--shadow-md) !important; }
+.shadow-lg   { box-shadow: var(--shadow-lg) !important; }
+.shadow-xl   { box-shadow: var(--shadow-xl) !important; }
+
+// ============================================================
+// BORDER
+// ============================================================
+
+.border        { border: 1px solid var(--color-border) !important; }
+.border-0      { border: none !important; }
+.border-top    { border-top: 1px solid var(--color-border) !important; }
+.border-right  { border-right: 1px solid var(--color-border) !important; }
+.border-bottom { border-bottom: 1px solid var(--color-border) !important; }
+.border-left   { border-left: 1px solid var(--color-border) !important; }
+.border-strong { border-color: var(--color-border-strong) !important; }
+.border-primary { border-color: var(--color-primary) !important; }
+
+// ============================================================
+// BACKGROUND
+// ============================================================
+
+.bg-transparent { background-color: transparent !important; }
+.bg-white       { background-color: var(--color-surface) !important; }
+.bg-surface     { background-color: var(--color-surface) !important; }
+.bg-surface-2   { background-color: var(--color-surface-2) !important; }
+.bg-bg          { background-color: var(--color-bg) !important; }
+.bg-primary     { background-color: var(--color-primary) !important; }
+.bg-primary-light { background-color: var(--color-primary-light) !important; }
+.bg-success     { background-color: var(--color-success-light) !important; }
+.bg-warning     { background-color: var(--color-warning-light) !important; }
+.bg-danger      { background-color: var(--color-danger-light) !important; }
+.bg-secondary   { background-color: var(--color-secondary) !important; }
+
+// ============================================================
+// OPACITY
+// ============================================================
+
+.opacity-0   { opacity: 0 !important; }
+.opacity-25  { opacity: 0.25 !important; }
+.opacity-50  { opacity: 0.5 !important; }
+.opacity-75  { opacity: 0.75 !important; }
+.opacity-90  { opacity: 0.9 !important; }
+.opacity-100 { opacity: 1 !important; }
+
+// ============================================================
+// CURSOR
+// ============================================================
+
+.cursor-pointer     { cursor: pointer !important; }
+.cursor-default     { cursor: default !important; }
+.cursor-not-allowed { cursor: not-allowed !important; }
+.cursor-move        { cursor: move !important; }
+.cursor-grab        { cursor: grab !important; }
+.cursor-text        { cursor: text !important; }
+
+// ============================================================
+// POINTER EVENTS / USER SELECT
+// ============================================================
+
+.pointer-events-none { pointer-events: none !important; }
+.pointer-events-auto { pointer-events: auto !important; }
+.select-none         { user-select: none !important; }
+.select-text         { user-select: text !important; }
+.select-all          { user-select: all !important; }
+
+// ============================================================
+// Z-INDEX
+// ============================================================
+
+.z-0    { z-index: 0 !important; }
+.z-10   { z-index: 10 !important; }
+.z-20   { z-index: 20 !important; }
+.z-30   { z-index: 30 !important; }
+.z-50   { z-index: 50 !important; }
+.z-auto { z-index: auto !important; }
+
+// ============================================================
+// ASPECT RATIO
+// ============================================================
+
+.aspect-square { aspect-ratio: 1 / 1 !important; }
+.aspect-video  { aspect-ratio: 16 / 9 !important; }
+.aspect-4-3    { aspect-ratio: 4 / 3 !important; }
+
+// ============================================================
+// OBJECT FIT
+// ============================================================
+
+.object-cover   { object-fit: cover !important; }
+.object-contain { object-fit: contain !important; }
+.object-fill    { object-fit: fill !important; }
+
+// ============================================================
+// TRANSITION
+// ============================================================
+
+.transition-none { transition: none !important; }
+.transition-fast { transition: all 0.15s ease !important; }
+.transition      { transition: all 0.2s ease !important; }
+.transition-slow { transition: all 0.3s ease !important; }
+
+// ============================================================
+// CONTAINER
+// ============================================================
+
+.container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $space-4;
+  padding-right: $space-4;
+
+  @media (min-width: $bp-sm)  { padding-left: $space-5;  padding-right: $space-5; }
+  @media (min-width: $bp-md)  { padding-left: $space-6;  padding-right: $space-6; }
+  @media (min-width: $bp-lg)  { max-width: 64rem; padding-left: $space-8; padding-right: $space-8; }
+  @media (min-width: $bp-xl)  { max-width: 80rem; }
+  @media (min-width: $bp-2xl) { max-width: 88rem; }
+}
+
+.container-sm  { max-width: 48rem; margin-left: auto; margin-right: auto; }
+.container-md  { max-width: 64rem; margin-left: auto; margin-right: auto; }
+.container-lg  { max-width: 80rem; margin-left: auto; margin-right: auto; }
+
+// ============================================================
+// VISUALLY HIDDEN (accessibility)
+// ============================================================
+
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.not-sr-only {
+  position: static !important;
+  width: auto !important;
+  height: auto !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow: visible !important;
+  clip: auto !important;
+  white-space: normal !important;
+}
+
+// ============================================================
+// PRINT
+// ============================================================
+
+@media print {
+  .no-print { display: none !important; }
+}
